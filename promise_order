@@ -7,15 +7,15 @@ new Promise(resolve => {
   new Promise(resolve => {
     console.log(4)
     resolve();
-  }).then(() => console.log(7)).then(()=>console.log(10));
+  }).then(() => console.log(7)).then(()=>console.log(9));
 
-  new Promise(reject =>{
+  new Promise((resolve, reject) =>{
     console.log(5);
-    reject();
-  }).then(()=>console.log(8)).then(()=>console.log(11))
+    reject(10);
+  }).then(()=>console.log("never")).catch((error)=>console.error(error))
 
 }).then(num => {
-  console.log(9)
-}).then(()=>console.log(12)).then(()=>console.log(13))
+  console.log(8)
+}).then(()=>console.log(11)).then(()=>console.log(12))
 
 console.log(6)
